@@ -8,12 +8,16 @@ async function run(): Promise<void> {
     const result: string = Buffer.from(input).toString('base64')
     core.setOutput('result', result)
   } catch (e) {
-    if (e instanceof Error) core.setFailed(e.message)
+    if (e instanceof Error) {
+      core.setFailed(e.message)
+    }
   }
 }
 
 try {
   run()
-} catch (e: any) {
-  core.setFailed(e.message)
+} catch (e) {
+  if (e instanceof Error) {
+    core.setFailed(e.message)
+  }
 }

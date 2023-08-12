@@ -49,8 +49,9 @@ function run() {
             core.setOutput('result', result);
         }
         catch (e) {
-            if (e instanceof Error)
+            if (e instanceof Error) {
                 core.setFailed(e.message);
+            }
         }
     });
 }
@@ -58,7 +59,9 @@ try {
     run();
 }
 catch (e) {
-    core.setFailed(e.message);
+    if (e instanceof Error) {
+        core.setFailed(e.message);
+    }
 }
 
 
